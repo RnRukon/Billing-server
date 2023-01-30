@@ -7,7 +7,7 @@ mongoose.set("strictQuery", false);
 
 const dbConnect = () => {
     try {
-        mongoose.connect(process.env.DB_USER).then(() => {
+        mongoose.connect('mongodb+srv://programmingHeroTask:dq9AWQ4wKv9HPQJ0@cluster0.af4at.mongodb.net/Billing?retryWrites=true&w=majority').then(() => {
             console.log(`Database connection is Successfully`);
         })
     } catch (error) {
@@ -27,7 +27,7 @@ const errorHandler = (err, req, res, next) => {
     })
 }
 
-app.use(errorHandler) 
+app.use(errorHandler)
 
 
 // server
