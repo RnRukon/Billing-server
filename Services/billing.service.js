@@ -24,6 +24,14 @@ exports.getBillingService = async (queries) => {
 
 };
 
+exports.getSingleBillingService = async (id) => {
+
+    const billing = await Billing.findById(
+        { _id: id }
+    );
+    return billing;
+};
+
 exports.updateBillingService = async (id, data) => {
 
     const billing = await Billing.findByIdAndUpdate(

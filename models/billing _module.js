@@ -12,20 +12,20 @@ const billingSchema = Mongoose.Schema({
     email: {
         type: String,
         validate: [validator.isEmail, "Provide a valid Email"],
-        // unique: [true, "Email address is existed"],
-        // required: [true, "Email address is required"],
+        unique: [true, "Email address is existed"],
+        required: [true, "Email address is required"],
         lowercase: true,
         trim: true,
     },
     phone: {
         type: String,
         validator: [validator.phone, "Provide a phone number"],
-        // unique: [true, "Phone number is existed"],
-        // required: [true, "email is required"],
+        unique: [true, "Phone number is existed"],
+        required: [true, "email is required"],
     },
     paidAmount: {
         type: Number,
-        // required: [true, "Paid Amount is required"],
+        required: [true, "Paid Amount is required"],
     }
 
 

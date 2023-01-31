@@ -4,6 +4,26 @@ const dotenv = require("dotenv").config();
 const User = require("../models/user_module");
 
 
+
+
+
+exports.getMeService = async (email) => {
+
+    const user = await User.findOne({ email: email });
+
+    return user;
+}
+exports.LogoutLoService = async (email) => {
+
+    const user = await User.updateOne(
+        { email: email },
+        { active: false },
+        { runValidators: true }
+    );
+
+    return user;
+}
+
 exports.registrationService = async (userInfo) => {
 
     const hashedPassword = await bcrypt.hash(userInfo.password, 10);
@@ -35,9 +55,12 @@ exports.loginService = async (userInfo) => {
                 userName: user.userName,
                 userId: user._id
             }, process.env.JWT_SECRET, {
-                expiresIn: '1h'
+                expiresIn: '24h'
             });
 
+            user.active = true;
+            user.access_token
+            user?.save()
             return {
                 access_token: token,
                 user: user

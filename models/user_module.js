@@ -26,10 +26,11 @@ const userSchema = Mongoose.Schema({
         require: true,
         trim: true,
     },
-    /* active: {
+    active: {
         type: Boolean,
-        require: true
-    } */
+        require: false
+    },
+    access_token: String
 
 },
     {

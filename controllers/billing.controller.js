@@ -1,5 +1,5 @@
 
-const { addBillingService, getBillingService, updateBillingService, deleteBillingService } = require("../Services/billing.service");
+const { addBillingService, getBillingService, updateBillingService, deleteBillingService, getSingleBillingService } = require("../Services/billing.service");
 
 
 exports.addBilling = async (req, res) => {
@@ -34,6 +34,7 @@ exports.getBilling = async (req, res) => {
             queries.skip = skip;
             queries.limit = parseInt(limit);
         }
+        
 
         const billing = await getBillingService(queries);
 
@@ -49,6 +50,26 @@ exports.getBilling = async (req, res) => {
         });
     }
 };
+exports.getSingleBilling = async (req, res) => {
+
+
+    try {
+        const billing = await getSingleBillingService(req?.params?.id);
+        res.status(200).json({
+            result: billing,
+            status: "success",
+            message: "Get single billing is Successfully",
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            status: "fail",
+            error,
+        });
+    }
+};
+
+
 exports.updateBilling = async (req, res) => {
     try {
         const billing = await updateBillingService(req.params.id, req.body);
