@@ -22,6 +22,8 @@ const billingSchema = Mongoose.Schema({
         validator: [validator.phone, "Provide a phone number"],
         unique: [true, "Phone number is existed"],
         required: [true, "email is required"],
+        length: [11, "Phone number must be at l1 characters."],
+       
     },
     paidAmount: {
         type: Number,

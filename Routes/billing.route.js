@@ -9,9 +9,9 @@ const router = express.Router();
 
 
 router.post("/add-billing", checkLogin, addBilling);
-router.get("/billing-list",checkLogin,  getBilling);
+router.get("/billing-list", checkLogin, getBilling);
 
-router.get("/billing-single/:id",  getSingleBilling);
+router.get("/billing-single/:id", checkLogin, getSingleBilling);
 
 router.patch("/update-billing/:id", checkLogin, updateBilling);
 router.delete("/delete-billing/:id", checkLogin, deleteBilling);
