@@ -55,7 +55,7 @@ exports.loginService = async (userInfo) => {
                 userName: user.userName,
                 userId: user._id
             }, process.env.JWT_SECRET, {
-                expiresIn: '24h'
+                expiresIn: '1m'
             });
 
             user.active = true;
